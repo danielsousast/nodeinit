@@ -20,6 +20,7 @@
     "express-validator": "^7.3.2",
     "i18next": "^26.3.6",
     "i18next-fs-backend": "^2.6.7",
+    "i18next-http-middleware": "^3.9.8",
     "mongodb": "^7.5.0",
     "mongoose": "^9.8.0"
   }

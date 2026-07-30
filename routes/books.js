@@ -1,24 +1,22 @@
 const express = require('express');
 const Book = require('../schemas/bookSchema'); 
 const router = express.Router();
-const { body, validationResult } = require('express-validator');
-const { handleValidationErrors } = require('../validators/bookValidator');
-
 const { createBookValidator, updateBookValidator, paramIdValidator } = require('../validators/bookValidator');
+const { handleValidationErrors } = require('../validators/bookValidator');
 
 router.post('/', createBookValidator, handleValidationErrors, (req, res) => {
 
     const { title, author, price, quantity } = req.body;
     const newBook = new Book({ title, author, price, quantity });
     newBook.save()
-        .then(() => res.status(201).send('Book created'))
-        .catch(err => res.status(500).send('Error creating book: ' + err.message));
+        .then(() => res.status(201).send(req.t('bookCreated')))
+        .catch(err => res.status(500).send(req.t('errorCreatingBook', { error: err.message })));
 });
 
 router.get('/', (req, res) => {
     Book.find()
         .then(books => res.status(200).json(books))
-        .catch(err => res.status(500).send('Error fetching books: ' + err.message));
+    .catch(err => res.status(500).send(req.t('errorFetchingBooks', { error: err.message })));
 });
 
 router.get('/:id', paramIdValidator, handleValidationErrors, (req, res) => {
@@ -26,11 +24,11 @@ router.get('/:id', paramIdValidator, handleValidationErrors, (req, res) => {
     Book.findById(id)
         .then(book => {
             if (!book) {
-                return res.status(404).send('Book not found');
+                return res.status(404).send(req.t('bookNotFound'));
             }
             res.status(200).json(book);
         })
-        .catch(err => res.status(500).send('Error fetching book: ' + err.message));
+        .catch(err => res.status(500).send(req.t('errorFetchingBook', { error: err.message })));
 });
 
 router.put('/:id', updateBookValidator, handleValidationErrors, (req, res) => {
@@ -39,11 +37,11 @@ router.put('/:id', updateBookValidator, handleValidationErrors, (req, res) => {
     Book.findByIdAndUpdate(id, { title, author, price, quantity }, { new: true })
         .then(updatedBook => {
             if (!updatedBook) {
-                return res.status(404).send('Book not found');
+                return res.status(404).send(req.t('bookNotFound'));
             }
             res.status(200).json(updatedBook);
         })
-        .catch(err => res.status(500).send('Error updating book: ' + err.message));
+        .catch(err => res.status(500).send(req.t('errorUpdatingBook', { error: err.message })));
 });
 
 router.delete('/:id', paramIdValidator, handleValidationErrors, (req, res) => {
@@ -51,11 +49,11 @@ router.delete('/:id', paramIdValidator, handleValidationErrors, (req, res) => {
     Book.findByIdAndDelete(id)
         .then(deletedBook => {
             if (!deletedBook) {
-                return res.status(404).send('Book not found');
+                return res.status(404).send(req.t('bookNotFound'));
             }
-            res.status(200).send('Book deleted');
+            res.status(200).send(req.t('bookDeleted'));
         })
-        .catch(err => res.status(500).send('Error deleting book: ' + err.message));
+        .catch(err => res.status(500).send(req.t('errorDeletingBook', { error: err.message })));
 });
 
 module.exports = router;

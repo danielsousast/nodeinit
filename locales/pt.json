@@ -1,0 +1,11 @@
+{
+    "testing": "Testando",
+    "bookCreated": "Livro criado",
+    "bookDeleted": "Livro removido",
+    "bookNotFound": "Livro nao encontrado",
+    "errorCreatingBook": "Erro ao criar livro: {{error}}",
+    "errorFetchingBooks": "Erro ao buscar livros: {{error}}",
+    "errorFetchingBook": "Erro ao buscar livro: {{error}}",
+    "errorUpdatingBook": "Erro ao atualizar livro: {{error}}",
+    "errorDeletingBook": "Erro ao remover livro: {{error}}"
+}

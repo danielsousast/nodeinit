@@ -1,0 +1,11 @@
+{
+    "testing": "Testing",
+    "bookCreated": "Book created",
+    "bookDeleted": "Book deleted",
+    "bookNotFound": "Book not found",
+    "errorCreatingBook": "Error creating book: {{error}}",
+    "errorFetchingBooks": "Error fetching books: {{error}}",
+    "errorFetchingBook": "Error fetching book: {{error}}",
+    "errorUpdatingBook": "Error updating book: {{error}}",
+    "errorDeletingBook": "Error deleting book: {{error}}"
+}
