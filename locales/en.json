@@ -7,5 +7,16 @@
     "errorFetchingBooks": "Error fetching books: {{error}}",
     "errorFetchingBook": "Error fetching book: {{error}}",
     "errorUpdatingBook": "Error updating book: {{error}}",
-    "errorDeletingBook": "Error deleting book: {{error}}"
+    "errorDeletingBook": "Error deleting book: {{error}}",
+    "validationTitleRequired": "Title is required",
+    "validationTitleString": "Title must be a string",
+    "validationAuthorRequired": "Author is required",
+    "validationAuthorString": "Author must be a string",
+    "validationPriceRequired": "Price is required",
+    "validationPricePositiveNumber": "Price must be a positive number",
+    "validationQuantityRequired": "Quantity is required",
+    "validationQuantityPositiveInteger": "Quantity must be a positive integer",
+    "validationBookIdRequired": "Book ID is required",
+    "validationInvalidBookId": "Invalid Book ID",
+    "pageNotFound": "Page Not Found"
 }

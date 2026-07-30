@@ -2,41 +2,41 @@ const { body, param } = require('express-validator')
 
 const createBookValidator = [
     body('title')
-        .notEmpty().withMessage('Title is required')
-        .isString().withMessage('Title must be a string'),
+        .notEmpty().withMessage((value, { req }) => req.t('validationTitleRequired'))
+        .isString().withMessage((value, { req }) => req.t('validationTitleString')),
     body('author')
-        .notEmpty().withMessage('Author is required')
-        .isString().withMessage('Author must be a string'),
+        .notEmpty().withMessage((value, { req }) => req.t('validationAuthorRequired'))
+        .isString().withMessage((value, { req }) => req.t('validationAuthorString')),
     body('price')
-        .notEmpty().withMessage('Price is required')
-        .isFloat({ gt: 0 }).withMessage('Price must be a positive number'), 
+        .notEmpty().withMessage((value, { req }) => req.t('validationPriceRequired'))
+        .isFloat({ gt: 0 }).withMessage((value, { req }) => req.t('validationPricePositiveNumber')), 
     body('quantity')
-        .notEmpty().withMessage('Quantity is required')
-        .isInt({ gt: 0 }).withMessage('Quantity must be a positive integer')       
+        .notEmpty().withMessage((value, { req }) => req.t('validationQuantityRequired'))
+        .isInt({ gt: 0 }).withMessage((value, { req }) => req.t('validationQuantityPositiveInteger'))       
 ];
 
 const updateBookValidator = [
     param('id')
-        .notEmpty().withMessage('Book ID is required')
-        .isMongoId().withMessage('Invalid Book ID'),
+        .notEmpty().withMessage((value, { req }) => req.t('validationBookIdRequired'))
+        .isMongoId().withMessage((value, { req }) => req.t('validationInvalidBookId')),
     body('title')
         .optional()
-        .isString().withMessage('Title must be a string'),
+        .isString().withMessage((value, { req }) => req.t('validationTitleString')),
     body('author')
         .optional()
-        .isString().withMessage('Author must be a string'),
+        .isString().withMessage((value, { req }) => req.t('validationAuthorString')),
     body('price')
         .optional()
-        .isFloat({ gt: 0 }).withMessage('Price must be a positive number'), 
+        .isFloat({ gt: 0 }).withMessage((value, { req }) => req.t('validationPricePositiveNumber')), 
     body('quantity')
         .optional()
-        .isInt({ gt: 0 }).withMessage('Quantity must be a positive integer')       
+        .isInt({ gt: 0 }).withMessage((value, { req }) => req.t('validationQuantityPositiveInteger'))       
 ];
 
 const paramIdValidator = [
     param('id')
-        .notEmpty().withMessage('Book ID is required')
-        .isMongoId().withMessage('Invalid Book ID')
+    .notEmpty().withMessage((value, { req }) => req.t('validationBookIdRequired'))
+    .isMongoId().withMessage((value, { req }) => req.t('validationInvalidBookId'))
 ];
 
 const { validationResult } = require('express-validator');

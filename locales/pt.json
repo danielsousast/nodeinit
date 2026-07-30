@@ -7,5 +7,16 @@
     "errorFetchingBooks": "Erro ao buscar livros: {{error}}",
     "errorFetchingBook": "Erro ao buscar livro: {{error}}",
     "errorUpdatingBook": "Erro ao atualizar livro: {{error}}",
-    "errorDeletingBook": "Erro ao remover livro: {{error}}"
+    "errorDeletingBook": "Erro ao remover livro: {{error}}",
+    "validationTitleRequired": "Titulo e obrigatorio",
+    "validationTitleString": "Titulo deve ser uma string",
+    "validationAuthorRequired": "Autor e obrigatorio",
+    "validationAuthorString": "Autor deve ser uma string",
+    "validationPriceRequired": "Preco e obrigatorio",
+    "validationPricePositiveNumber": "Preco deve ser um numero positivo",
+    "validationQuantityRequired": "Quantidade e obrigatoria",
+    "validationQuantityPositiveInteger": "Quantidade deve ser um inteiro positivo",
+    "validationBookIdRequired": "ID do livro e obrigatorio",
+    "validationInvalidBookId": "ID do livro invalido",
+    "pageNotFound": "Pagina nao encontrada"
 }

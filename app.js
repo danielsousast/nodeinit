@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/books", booksRouter);
 
 app.use((req, res, next) => {
-  res.status(404).send("<h1>Page Not Found</h1>");
+  res.status(404).send(`<h1>${req.t("pageNotFound")}</h1>`);
 });
 
 const PORT = process.env.PORT || 3000;
